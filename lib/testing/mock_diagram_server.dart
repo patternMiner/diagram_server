@@ -3,7 +3,6 @@ library mock_diagram_server;
 import 'dart:async';
 import 'dart:io';
 import 'package:shelf/shelf.dart' as shelf;
-import 'package:shelf_bind/shelf_bind.dart';
 import 'package:shelf/shelf_io.dart' as io;
 import 'package:shelf_exception_response/exception_response.dart';
 import 'package:shelf_route/shelf_route.dart';
@@ -39,24 +38,5 @@ class MockDiagramServer {
       return _server.close().then((_) => _server = null);
     }
     return new Future.value(_server);
-  }
-}
-
-class CustomRouteCreator extends Routeable {
-  final DiagramMetadataResource _res;
-  CustomRouteCreator(this._res);
-  @override
-  void createRoutes(Router router) {
-    router
-        ..get('/search{?query}',
-            bind((String query) => _res.search(query)))
-        ..get('/find/{id}',
-            bind((String id) => _res.find(id)))
-        ..get('/delete/{id}',
-            bind((String id) => _res.delete(id)))
-        ..post('/create',
-            bind((@RequestBody() DiagramMetadata dm) => _res.create(dm)))
-        ..post('/update',
-            bind((@RequestBody() DiagramMetadata dm) => _res.update(dm)));
   }
 }
