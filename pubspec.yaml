@@ -1,0 +1,16 @@
+name: diagram_server
+version: 0.0.1
+author: Jagdish Bisa <jbisa61@gmail.com>
+description: 'diagram_server: RESTful web server to uploade/find and add meta-data
+  to interesting diagrams.'
+environment:
+  sdk: any
+dependencies:
+  args: any
+  shelf: any
+  shelf_bind: any
+  shelf_exception_response: any
+  shelf_route: any
+dev_dependencies:
+  unittest: any
+  
